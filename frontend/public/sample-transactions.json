@@ -1,0 +1,82 @@
+[
+  {
+    "id": "TXN001",
+    "date": "2026-09-01",
+    "description": "Salary Credit",
+    "category": "Income",
+    "amount": 50000,
+    "type": "income",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN002",
+    "date": "2026-09-02",
+    "description": "Rent Payment",
+    "category": "Housing",
+    "amount": 15000,
+    "type": "expense",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN003",
+    "date": "2026-09-03",
+    "description": "Grocery Shopping",
+    "category": "Food",
+    "amount": 3200,
+    "type": "expense",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN004",
+    "date": "2026-09-04",
+    "description": "Freelance Payment",
+    "category": "Income",
+    "amount": 12000,
+    "type": "income",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN005",
+    "date": "2026-09-05",
+    "description": "Electricity Bill",
+    "category": "Utilities",
+    "amount": 1800,
+    "type": "expense",
+    "status": "pending",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN006",
+    "date": "2026-09-06",
+    "description": "Fuel",
+    "category": "Transport",
+    "amount": 2500,
+    "type": "expense",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN007",
+    "date": "2026-09-07",
+    "description": "Investment Return",
+    "category": "Investment",
+    "amount": 7500,
+    "type": "income",
+    "status": "completed",
+    "user": "Omkar"
+  },
+  {
+    "id": "TXN008",
+    "date": "2026-09-08",
+    "description": "Online Shopping",
+    "category": "Shopping",
+    "amount": 4500,
+    "type": "expense",
+    "status": "failed",
+    "user": "Omkar"
+  }
+]

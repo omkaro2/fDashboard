@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -6,12 +8,16 @@ interface MainLayoutProps {
 
 function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div>
-      <header>
-        <h2>fDashboard</h2>
-      </header>
+    <div className="app-layout">
+      <Sidebar />
 
-      <main>{children}</main>
+      <div className="main-section">
+        <Header />
+
+        <main className="main-content">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

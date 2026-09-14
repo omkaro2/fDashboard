@@ -1,3 +1,7 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +11,7 @@
 html,
 body,
 #root {
+  width: 100%;
   min-height: 100%;
 }
 
@@ -14,4 +19,466 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f7fa;
   color: #1f2937;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+
+/* =========================================
+   APP LAYOUT
+========================================= */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #111827;
+  color: white;
+  padding: 24px 16px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  padding: 0 8px 30px;
+}
+
+.sidebar-logo h2 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-nav a {
+  display: block;
+  text-decoration: none;
+  color: #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background: #1f2937;
+  color: white;
+}
+
+.sidebar-nav a.active {
+  background: #2563eb;
+  color: white;
+}
+
+
+/* =========================================
+   MAIN SECTION
+========================================= */
+
+.main-section {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.dashboard-header {
+  min-height: 80px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 32px;
+}
+
+.dashboard-header h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.dashboard-header p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.main-content {
+  padding: 32px;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 22px;
+
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.stat-title {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.stat-change {
+  color: #16a34a;
+  font-size: 13px;
+}
+
+
+/* =========================================
+   DASHBOARD SECTIONS
+========================================= */
+
+.dashboard-section {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.dashboard-section h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+
+/* =========================================
+   FINANCIAL OVERVIEW
+========================================= */
+
+.overview-placeholder {
+  min-height: 220px;
+
+  background: #f9fafb;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TRANSACTION HEADER
+========================================= */
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.transaction-header h2 {
+  margin-bottom: 5px;
+}
+
+.transaction-header p {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* =========================================
+   TRANSACTION FILTERS
+========================================= */
+
+.transaction-filters {
+  display: grid;
+
+  grid-template-columns:
+    2fr
+    repeat(4, 1fr);
+
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.transaction-filters input,
+.transaction-filters select {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: white;
+  color: #1f2937;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.transaction-filters input::placeholder {
+  color: #9ca3af;
+}
+
+.transaction-filters input:focus,
+.transaction-filters select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================================
+   TRANSACTION TABLE
+========================================= */
+
+.transaction-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+  min-width: 800px;
+
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 14px 16px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  white-space: nowrap;
+}
+
+.transaction-table th {
+  background: #f9fafb;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.transaction-table td {
+  font-size: 14px;
+  color: #374151;
+}
+
+.transaction-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.transaction-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+
+/* =========================================
+   TRANSACTION TYPE BADGES
+========================================= */
+
+.type-badge,
+.status-badge {
+  display: inline-block;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  text-transform: capitalize;
+}
+
+
+/* Income */
+
+.type-badge.income {
+  background: #dcfce7;
+  color: #166534;
+}
+
+
+/* Expense */
+
+.type-badge.expense {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.status-badge.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.failed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+  text-align: center !important;
+  padding: 40px !important;
+
+  color: #9ca3af;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .transaction-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .sidebar-logo {
+    padding-bottom: 16px;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar-nav a {
+    padding: 10px 12px;
+  }
+
+  .dashboard-header {
+    padding: 18px 20px;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .dashboard {
+    gap: 20px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-section {
+    padding: 18px;
+  }
+
+  .transaction-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-table {
+    min-width: 800px;
+  }
 }
