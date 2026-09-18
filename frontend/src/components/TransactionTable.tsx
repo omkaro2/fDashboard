@@ -4,64 +4,172 @@ interface TransactionTableProps {
   transactions: Transaction[];
 }
 
-function TransactionTable({
+const TransactionTable = ({
   transactions,
-}: TransactionTableProps) {
+}: TransactionTableProps) => {
+  const formatDate = (
+    date: string
+  ): string => {
+    const parsedDate = new Date(date);
+
+    if (
+      Number.isNaN(
+        parsedDate.getTime()
+      )
+    ) {
+      return date;
+    }
+
+    return parsedDate.toLocaleDateString(
+      "en-IN",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }
+    );
+  };
+
+  const formatAmount = (
+    amount: number
+  ): string => {
+    const numericAmount =
+      Number(amount) || 0;
+
+    return numericAmount.toLocaleString(
+      "en-IN",
+      {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      }
+    );
+  };
+
   return (
     <div className="transaction-table-container">
       <table className="transaction-table">
+
         <thead>
           <tr>
             <th>Date</th>
+            <th>Transaction ID</th>
             <th>Description</th>
             <th>Category</th>
             <th>Amount</th>
             <th>Type</th>
             <th>Status</th>
-            <th>User</th>
+            <th>Account</th>
           </tr>
         </thead>
 
         <tbody>
+
           {transactions.length === 0 ? (
             <tr>
-              <td colSpan={7} className="empty-state">
+              <td
+                colSpan={8}
+                className="empty-state"
+              >
                 No transactions found.
               </td>
             </tr>
           ) : (
-            transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td>{transaction.date}</td>
-                <td>{transaction.description}</td>
-                <td>{transaction.category}</td>
+            transactions.map(
+              (transaction, index) => {
 
-                <td>
-                  ₹{transaction.amount.toLocaleString("en-IN")}
-                </td>
+                const transactionKey =
+                  transaction._id ||
+                  transaction.transactionId ||
+                  `${transaction.date}-${transaction.description}-${index}`;
 
-                <td>
-                  <span className={`type-badge ${transaction.type}`}>
-                    {transaction.type}
-                  </span>
-                </td>
+                const transactionType =
+                  transaction.type;
 
-                <td>
-                  <span
-                    className={`status-badge ${transaction.status}`}
+                const transactionStatus =
+                  transaction.status;
+
+                return (
+                  <tr
+                    key={
+                      transactionKey
+                    }
                   >
-                    {transaction.status}
-                  </span>
-                </td>
 
-                <td>{transaction.user}</td>
-              </tr>
-            ))
+                    {/* DATE */}
+
+                    <td>
+                      {formatDate(
+                        transaction.date
+                      )}
+                    </td>
+
+                    {/* TRANSACTION ID */}
+
+                    <td>
+                      {transaction.transactionId ||
+                        "—"}
+                    </td>
+
+                    {/* DESCRIPTION */}
+
+                    <td>
+                      {transaction.description ||
+                        "—"}
+                    </td>
+
+                    {/* CATEGORY */}
+
+                    <td>
+                      {transaction.category ||
+                        "—"}
+                    </td>
+
+                    {/* AMOUNT */}
+
+                    <td>
+                      ₹
+                      {formatAmount(
+                        transaction.amount
+                      )}
+                    </td>
+
+                    {/* TYPE */}
+
+                    <td>
+                      <span
+                        className={`type-badge ${transactionType}`}
+                      >
+                        {transactionType}
+                      </span>
+                    </td>
+
+                    {/* STATUS */}
+
+                    <td>
+                      <span
+                        className={`status-badge ${transactionStatus}`}
+                      >
+                        {transactionStatus}
+                      </span>
+                    </td>
+
+                    {/* ACCOUNT */}
+
+                    <td>
+                      {transaction.account ||
+                        "—"}
+                    </td>
+
+                  </tr>
+                );
+              }
+            )
           )}
+
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default TransactionTable;

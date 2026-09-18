@@ -1,4 +1,6 @@
-export type TransactionType = "income" | "expense";
+export type TransactionType =
+  | "income"
+  | "expense";
 
 export type TransactionStatus =
   | "completed"
@@ -6,12 +8,27 @@ export type TransactionStatus =
   | "failed";
 
 export interface Transaction {
-  id: string;
+  _id?: string;
+
+  transactionId?: string;
+
   date: string;
+
   description: string;
+
   category: string;
+
   amount: number;
+
   type: TransactionType;
+
   status: TransactionStatus;
-  user: string;
+
+  account: string;
+
+  userId?: string;
+
+  createdAt?: string;
+
+  updatedAt?: string;
 }
