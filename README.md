@@ -455,4 +455,4 @@ npm run build
 
 **Omkar Dere**
 
-MCA Student | Java Full Stack Developer
+MCA Student | Full Stack Developer
